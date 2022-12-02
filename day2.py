@@ -38,10 +38,10 @@ score1 = 0
 score2 = 0
 
 for round in rounds:
-    opp = round.split(" ")[0]
-    me = round.split(" ")[1]
+    [opp, me] = round.split(" ")
     score1 += scoring[rules[code1[opp]][code1[me]]] + scoring[code1[me]]
     score2 += scoring[rules[code2[opp]][code2[me]]] + scoring[code2[me]]
 
+print("Rounds Played:", len(rounds))
 print("Code 1:", score1)
 print("Code 2:", score2)
