@@ -56,14 +56,10 @@ def groups_of(list, parts):
 
 compartmentSum = 0
 for sack in rucksacks:
-    compartments = groups_of(sack, int(len(sack)/2))
-    sack0 = set()
-    for item in compartments[0]:
-        sack0.add(item)
-    for item in compartments[1]:
-        if item in sack0:
-            compartmentSum += priority(item)
-            break
+    c = groups_of(sack, int(len(sack)/2))
+    shared = set(c[0]).intersection(set(c[1]))
+    for item in shared:
+        compartmentSum += priority(item)
 
 print("Sum of item types in each compartment:", compartmentSum)
 
@@ -107,17 +103,9 @@ print("Sum of item types in each compartment:", compartmentSum)
 groups = groups_of(rucksacks, 3)
 groupSum = 0
 
-for group in groups:
-    sack0 = set()
-    shared01 = set()
-    for item in group[0]:
-        sack0.add(item)
-    for item in group[1]:
-        if item in sack0:
-            shared01.add(item)
-    for item in group[2]:
-        if item in shared01:
-            groupSum += priority(item)
-            break
+for g in groups:
+    shared = set(g[0]).intersection(set(g[1])).intersection(set(g[2]))
+    for item in shared:
+        groupSum += priority(item)
 
 print("Sum of group priorities:", groupSum)
