@@ -57,8 +57,7 @@ def groups_of(list, parts):
 compartmentSum = 0
 for sack in rucksacks:
     c = groups_of(sack, int(len(sack)/2))
-    shared = set(c[0]).intersection(set(c[1]))
-    for item in shared:
+    for item in set(c[0]).intersection(set(c[1])):
         compartmentSum += priority(item)
 
 print("Sum of item types in each compartment:", compartmentSum)
@@ -100,12 +99,9 @@ print("Sum of item types in each compartment:", compartmentSum)
 # Find the item type that corresponds to the badges of each three-Elf group.
 # What is the sum of the priorities of those item types?
 
-groups = groups_of(rucksacks, 3)
 groupSum = 0
-
-for g in groups:
-    shared = set(g[0]).intersection(set(g[1])).intersection(set(g[2]))
-    for item in shared:
+for g in groups_of(rucksacks, 3):
+    for item in set(g[0]).intersection(set(g[1])).intersection(set(g[2])):
         groupSum += priority(item)
 
 print("Sum of group priorities:", groupSum)
