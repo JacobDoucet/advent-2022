@@ -26,13 +26,9 @@ for row in data:
 # Part 1
 
 max_size = 100000
-total_size = 0
 print("Part 1:", sum(filter(lambda size: size <= max_size, map(lambda path: folders[path], folders))))
 
 # Part 2
 
-system_size = 70000000
-required_unused_size = 30000000
-system_max_used_size = system_size - required_unused_size
-min_free_up_space = folders["/"] - system_max_used_size
+min_free_up_space = folders["/"] - 70000000 + 30000000
 print("Part 2:", min(list(filter(lambda size: min_free_up_space < size, map(lambda path: folders[path], folders)))))
