@@ -1,62 +1,67 @@
+import math
+
 filename = "day8.txt"
 data = list(map(lambda line: list(map(lambda n: int(n), line)), open(filename).read().split("\n")))
 
-col_height = len(data)
-row_width = len(data[0])
-highest_score = -1
-trees_visible = 0
+height = len(data)
+width = len(data[0])
+highestScore = -1
+treesVisible = 0
 
-for (y0, line) in enumerate(data):
-    for (x0, h) in enumerate(line):
+for y0, _ in enumerate(data):
+    for x0, _ in enumerate(data[y0]):
 
-        xI = list(range(0, x0))
-        xI.reverse()
-        xN = range(x0 + 1, len(line))
-        yI = list(range(0, y0))
-        yI.reverse()
-        yN = range(y0 + 1, len(data))
+        # Check to the left
+        xLeft = list(range(0, x0))
+        xLeft.reverse()
+        # Check to the right
+        xRight = range(x0 + 1, width)
+        # Check above
+        yAbove = list(range(0, y0))
+        yAbove.reverse()
+        # Check below
+        yBelow = range(y0 + 1, height)
 
-        score_parts = [0] * 4
+        score = 1
         visible = False
 
-        for xn in xI:
-            if line[xn] >= line[x0]:
-                score_parts[0] = x0 - xn
+        for xn in xLeft:
+            if data[y0][xn] >= data[y0][x0]:
+                score *= x0 - xn
                 break
         else:
-            score_parts[0] = x0
+            score *= x0
             visible = True
 
-        for xn in xN:
-            if line[xn] >= line[x0]:
-                score_parts[1] = xn - x0
+        for xn in xRight:
+            if data[y0][xn] >= data[y0][x0]:
+                score *= xn - x0
                 break
         else:
-            score_parts[1] = row_width - x0 - 1
+            score *= width - x0 - 1
             visible = True
 
-        for yn in yI:
+        for yn in yAbove:
             if data[yn][x0] >= data[y0][x0]:
-                score_parts[2] = y0 - yn
+                score *= y0 - yn
                 break
         else:
-            score_parts[2] = y0
+            score *= y0
             visible = True
 
-        for yn in yN:
+        for yn in yBelow:
             if data[yn][x0] >= data[y0][x0]:
-                score_parts[3] = yn - y0
+                score *= yn - y0
                 break
         else:
-            score_parts[3] = col_height - y0 - 1
+            score *= height - y0 - 1
             visible = True
 
         if visible:
-            trees_visible += 1
+            treesVisible += 1
 
-        score = score_parts[0] * score_parts[1] * score_parts[2] * score_parts[3]
-        if score > highest_score:
-            highest_score = score
+        if score > highestScore:
+            highestScore = score
 
-print("Part 1:", trees_visible)
-print("Part 2:", highest_score)
+print("Part 1:", treesVisible)
+print("Part 2:", highestScore)
