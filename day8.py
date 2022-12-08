@@ -11,57 +11,47 @@ treesVisible = 0
 for y0, _ in enumerate(data):
     for x0, _ in enumerate(data[y0]):
 
-        # Check to the left
-        xLeft = list(range(0, x0))
-        xLeft.reverse()
-        # Check to the right
-        xRight = range(x0 + 1, width)
-        # Check above
-        yAbove = list(range(0, y0))
-        yAbove.reverse()
-        # Check below
-        yBelow = range(y0 + 1, height)
-
         score = 1
         visible = False
 
-        for xn in xLeft:
-            if data[y0][xn] >= data[y0][x0]:
-                score *= x0 - xn
+        # Left
+        for X in reversed(list(range(0, x0))):
+            if data[y0][X] >= data[y0][x0]:
+                score *= x0 - X
                 break
         else:
             score *= x0
             visible = True
 
-        for xn in xRight:
-            if data[y0][xn] >= data[y0][x0]:
-                score *= xn - x0
+        # Right
+        for X in range(x0 + 1, width):
+            if data[y0][X] >= data[y0][x0]:
+                score *= X - x0
                 break
         else:
             score *= width - x0 - 1
             visible = True
 
-        for yn in yAbove:
-            if data[yn][x0] >= data[y0][x0]:
-                score *= y0 - yn
+        # Above
+        for Y in reversed(list(range(0, y0))):
+            if data[Y][x0] >= data[y0][x0]:
+                score *= y0 - Y
                 break
         else:
             score *= y0
             visible = True
 
-        for yn in yBelow:
-            if data[yn][x0] >= data[y0][x0]:
-                score *= yn - y0
+        # Below
+        for Y in range(y0 + 1, height):
+            if data[Y][x0] >= data[y0][x0]:
+                score *= Y - y0
                 break
         else:
             score *= height - y0 - 1
             visible = True
 
-        if visible:
-            treesVisible += 1
-
-        if score > highestScore:
-            highestScore = score
+        treesVisible += 1 if visible else 0
+        highestScore = score if score > highestScore else highestScore
 
 print("Part 1:", treesVisible)
 print("Part 2:", highestScore)
