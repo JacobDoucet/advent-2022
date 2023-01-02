@@ -9,7 +9,7 @@ def move_tail(next_head_pos, cur_tail_pos):
         return [ next_head_pos[0] + int(delta[0] / 2), next_head_pos[1] + int(delta[1] / 2)]
     return cur_tail_pos
 
-data = open("day9.txt").read()
+data = open("day09.txt").read()
 pattern = "(?:([A-Z]) ([0-9]+))"
 vectors = list(map(lambda match: {"dir": match[0], "delta": int(match[1])}, re.findall(pattern, data)))
 unit_vector = {"U": [0, 1], "D": [0, -1], "L": [-1, 0], "R": [1, 0]}

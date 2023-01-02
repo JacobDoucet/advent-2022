@@ -1,4 +1,4 @@
-rounds = open("day2.txt").read().split("\n")
+rounds = open("day02.txt").read().split("\n")
 
 rock = "r"
 paper = "p"

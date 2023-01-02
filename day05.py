@@ -1,6 +1,6 @@
 import re
 
-data = open('day5.txt').read()
+data = open('day05.txt').read()
 
 def groups_of(list, parts):
     return [list[i:i + parts] for i in range(0, len(list), parts)]

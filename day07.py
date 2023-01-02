@@ -1,6 +1,6 @@
 import re
 
-data = open("day7.txt").read().split("\n")
+data = open("day07.txt").read().split("\n")
 
 navigate_down = "cd ([A-Za-z0-9]+)"
 navigate_up = "cd \.\."

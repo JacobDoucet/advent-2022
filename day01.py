@@ -1,6 +1,6 @@
 import sys
 
-elves = open("day1.txt").read().split("\n\n")
+elves = open("day01.txt").read().split("\n\n")
 n = int(sys.argv[1])
 
 topCals = [0] * n

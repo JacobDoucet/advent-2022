@@ -1,4 +1,4 @@
-rucksacks = open("day3.txt").read().split("\n")
+rucksacks = open("day03.txt").read().split("\n")
 # --- Day 3: Rucksack Reorganization ---
 # One Elf has the important job of loading all of the rucksacks with supplies for the jungle journey.
 # Unfortunately, that Elf didn't quite follow the packing instructions, and so a few items now need to be rearranged.

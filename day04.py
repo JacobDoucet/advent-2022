@@ -52,7 +52,7 @@
 #
 # In how many assignment pairs do the ranges overlap?
 
-assignments = open('day4.txt').read().split("\n")
+assignments = open('day04.txt').read().split("\n")
 print("Num assignments:", len(assignments))
 
 def ranges_contained(s0, e0, s1, e1):

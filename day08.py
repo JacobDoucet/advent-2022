@@ -1,6 +1,6 @@
 import math
 
-filename = "day8.txt"
+filename = "day08.txt"
 data = list(map(lambda line: list(map(lambda n: int(n), line)), open(filename).read().split("\n")))
 
 height = len(data)

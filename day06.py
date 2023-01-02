@@ -1,4 +1,4 @@
-chars = open("day6.txt").read()
+chars = open("day06.txt").read()
 
 def detect_message(size):
     for (i, char) in enumerate(chars):
